@@ -10,7 +10,7 @@ public class Transacciones {
         try (PrintWriter pw = new PrintWriter(new FileWriter(archivo))) {
             Random random = new Random();
             for (int i = 0; i < cantidadTransacciones; i++) {
-                long transaccion = random.nextLong();
+                long transaccion = random.nextLong(Long.MAX_VALUE) + 1; // Genera un número aleatorio mayor o igual a 1
                 pw.println(transaccion);
             }
         } catch (IOException e) {

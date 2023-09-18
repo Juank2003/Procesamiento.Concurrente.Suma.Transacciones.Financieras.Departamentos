@@ -4,15 +4,10 @@ public class Lanzador {
     public static void main(String[] args) {
         String[] departamentos = { "informatica", "gerencia", "contabilidad", "comercio", "recursos_humanos" };
 
-        // Generar transacciones aleatorias para cada departamento
-        for (String departamento : departamentos) {
-            Transacciones.generarTransacciones(departamento + ".txt", 1000); // Cambia la cantidad según sea necesario
-        }
-
         // Crear hilos para procesar cada archivo
         Thread[] threads = new Thread[departamentos.length];
         for (int i = 0; i < departamentos.length; i++) {
-            threads[i] = new Thread(new ProcesadorContabilidad(departamentos[i] + ".txt"));
+            threads[i] = new Thread(new ProcesadorContabilidad(departamentos[i] + ".txt", departamentos[i] + ".txt.res"));
             threads[i].start();
         }
 
@@ -25,8 +20,14 @@ public class Lanzador {
             }
         }
 
+        // Crear un nuevo array para los nombres de archivos de resultados
+        String[] archivosResultados = new String[departamentos.length];
+        for (int i = 0; i < departamentos.length; i++) {
+            archivosResultados[i] = departamentos[i] + ".txt.res";
+        }
+
         // Sumar todas las sumas de departamentos
-        long sumaGlobal = UtilidadesFicheros.obtenerSumaTransacciones(departamentos);
+        long sumaGlobal = UtilidadesFicheros.obtenerSumaTransacciones(archivosResultados);
 
         // Guardar resultado global
         try (PrintWriter pw = new PrintWriter(new FileWriter("Resultado_global.txt"))) {
