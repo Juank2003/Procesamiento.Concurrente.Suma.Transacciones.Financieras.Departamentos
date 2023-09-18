@@ -1,4 +1,6 @@
 ## Procesamiento.Concurrente.Suma.Transacciones.Financieras.Departamentos
+
+### Mi repositorio:
 Procesamiento Concurrente y Suma de Transacciones Financieras de Departamentos
 Contexto: 
 Eres un desarrollador de software en una gran corporación con múltiples departamentos como informática, gerencia, contabilidad, comercio y recursos humanos. Cada departamento realiza varias transacciones financieras diarias, y todas estas transacciones se registran y almacenan en archivos de texto individuales correspondientes a cada departamento.
